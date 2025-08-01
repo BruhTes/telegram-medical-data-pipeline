@@ -160,4 +160,75 @@ models:
       - name: message_is_weekend
         description: "Whether message was sent on a weekend (from dim_dates)"
       - name: message_season
-        description: "Season of message (from dim_dates)" 
+        description: "Season of message (from dim_dates)"
+
+  - name: fct_image_detections
+    description: "Fact table containing YOLO object detection results linked to messages"
+    columns:
+      - name: detection_id
+        description: "Primary key - unique detection identifier"
+        tests:
+          - unique
+          - not_null
+      - name: message_id
+        description: "Foreign key to fct_messages (when available)"
+      - name: channel_name
+        description: "Foreign key to dim_channels"
+      - name: detected_object_class
+        description: "Class name of detected object (e.g., person, bottle, car)"
+        tests:
+          - not_null
+      - name: confidence_score
+        description: "YOLO confidence score (0.0 to 1.0)"
+        tests:
+          - not_null
+      - name: confidence_level
+        description: "Categorized confidence level (high, medium, low)"
+      - name: class_id
+        description: "YOLO class ID"
+      - name: object_category
+        description: "Object category (medical, non_medical)"
+      - name: is_medical_related
+        description: "Boolean indicating if object is medical-related"
+      - name: bbox_x1
+        description: "Bounding box x1 coordinate"
+      - name: bbox_y1
+        description: "Bounding box y1 coordinate"
+      - name: bbox_x2
+        description: "Bounding box x2 coordinate"
+      - name: bbox_y2
+        description: "Bounding box y2 coordinate"
+      - name: bbox_width
+        description: "Width of bounding box"
+      - name: bbox_height
+        description: "Height of bounding box"
+      - name: detection_area
+        description: "Area of detected object"
+      - name: relative_area_percentage
+        description: "Relative area as percentage of image"
+      - name: total_objects_in_image
+        description: "Total objects detected in the image"
+      - name: medical_objects_in_image
+        description: "Number of medical objects in the image"
+      - name: primary_object
+        description: "Primary object in the image (highest confidence)"
+      - name: primary_confidence
+        description: "Confidence score of primary object"
+      - name: avg_confidence
+        description: "Average confidence across all detections in image"
+      - name: content_type
+        description: "Type of image content (medical_content, general_content, no_objects)"
+      - name: detected_classes_array
+        description: "Array of all detected object classes in the image"
+      - name: file_path
+        description: "Path to the original image file"
+      - name: file_name
+        description: "Name of the image file"
+      - name: detection_time
+        description: "Timestamp when detection was performed"
+      - name: processing_time
+        description: "Timestamp when detection data was processed"
+      - name: model_used
+        description: "YOLO model used for detection"
+      - name: confidence_threshold
+        description: "Confidence threshold used for detection" 

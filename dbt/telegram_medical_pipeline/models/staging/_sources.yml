@@ -28,4 +28,31 @@ sources:
           - name: loaded_at
             description: "Timestamp when data was loaded into database"
             tests:
+              - not_null
+              
+      - name: raw_image_detections
+        description: "Raw YOLO detection results from image analysis"
+        columns:
+          - name: id
+            description: "Primary key"
+            tests:
+              - unique
+              - not_null
+          - name: file_path
+            description: "Path to the detection JSON file"
+            tests:
+              - not_null
+          - name: file_name
+            description: "Name of the detection file"
+            tests:
+              - not_null
+          - name: channel_name
+            description: "Name of the Telegram channel"
+          - name: detection_data
+            description: "Raw YOLO detection data as JSONB"
+            tests:
+              - not_null
+          - name: loaded_at
+            description: "Timestamp when detection data was loaded"
+            tests:
               - not_null 
