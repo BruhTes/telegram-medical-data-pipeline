@@ -141,7 +141,7 @@ def log_error_with_context(error: Exception, context: str, logger: logging.Logge
     import traceback
     logger.error(f"Stack trace:\n{traceback.format_exc()}")
 
-def log_channel_status(channel_name: str, status: str, details: str = "", logger: logging.Logger):
+def log_channel_status(channel_name: str, status: str, logger: logging.Logger, details: str = ""):
     """Log channel processing status"""
     status_emoji = {
         "started": "🟡",
