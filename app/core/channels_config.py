@@ -88,6 +88,62 @@ ADDITIONAL_MEDICAL_CHANNELS = [
         "category": "healthcare",
         "active": True,
         "priority": "low"
+    },
+    {
+        "name": "ethiopian_pharmaceuticals",
+        "url": "https://t.me/ethiopian_pharmaceuticals",
+        "description": "Ethiopian Pharmaceuticals",
+        "category": "pharmaceuticals",
+        "active": True,
+        "priority": "medium"
+    },
+    {
+        "name": "medical_ethiopia",
+        "url": "https://t.me/medical_ethiopia",
+        "description": "Medical Ethiopia",
+        "category": "healthcare",
+        "active": True,
+        "priority": "medium"
+    },
+    {
+        "name": "pharmacy_ethiopia",
+        "url": "https://t.me/pharmacy_ethiopia",
+        "description": "Pharmacy Ethiopia",
+        "category": "pharmacy",
+        "active": True,
+        "priority": "medium"
+    },
+    {
+        "name": "health_ethiopia",
+        "url": "https://t.me/health_ethiopia",
+        "description": "Health Ethiopia",
+        "category": "healthcare",
+        "active": True,
+        "priority": "low"
+    },
+    {
+        "name": "medicine_ethiopia",
+        "url": "https://t.me/medicine_ethiopia",
+        "description": "Medicine Ethiopia",
+        "category": "pharmaceuticals",
+        "active": True,
+        "priority": "low"
+    },
+    {
+        "name": "ethiopian_healthcare",
+        "url": "https://t.me/ethiopian_healthcare",
+        "description": "Ethiopian Healthcare",
+        "category": "healthcare",
+        "active": True,
+        "priority": "low"
+    },
+    {
+        "name": "addis_medicine",
+        "url": "https://t.me/addis_medicine",
+        "description": "Addis Medicine",
+        "category": "pharmaceuticals",
+        "active": True,
+        "priority": "low"
     }
 ]
 

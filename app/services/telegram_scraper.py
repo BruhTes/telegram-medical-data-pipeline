@@ -133,10 +133,17 @@ class TelegramScraper:
             
             # Get messages
             async for message in self.client.iter_messages(channel, limit=limit):
-                if message and message.text:  # Only process text messages for now
+                if message:  # Process all messages (text and media)
                     serialized_message = self._serialize_message(message)
                     serialized_message["channel_name"] = channel_name
                     serialized_message["channel_id"] = channel.id
+                    
+                    # Download media if present (for object detection)
+                    if message.media:
+                        media_path = await self.download_media(message, channel_name)
+                        if media_path:
+                            serialized_message["local_media_path"] = media_path
+                    
                     messages.append(serialized_message)
                     
             logger.info(f"Scraped {len(messages)} messages from {channel_name}")
