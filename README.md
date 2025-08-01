@@ -1,20 +1,20 @@
-# 🏥 Telegram Medical Data Pipeline
+# Telegram Medical Data Pipeline
 
 **Complete End-to-End Data Pipeline for Ethiopian Medical Business Analytics**
 
 A production-ready data pipeline that extracts, transforms, and analyzes medical business data from Telegram channels using modern data engineering tools.
 
-## 🎯 Project Status: **ALL TASKS COMPLETE** ✅
+## Project Status: **ALL TASKS COMPLETE**
 
 | Task | Status | Description |
 |------|--------|-------------|
-| **Task 1** | ✅ **COMPLETE** | Data Scraping and Collection (Telegram) |
-| **Task 2** | ✅ **COMPLETE** | Data Modeling and Transformation (dbt) |
-| **Task 3** | ✅ **COMPLETE** | Data Enrichment with Object Detection (YOLO) |
-| **Task 4** | ✅ **COMPLETE** | Analytical API Development (FastAPI) |
-| **Task 5** | ✅ **COMPLETE** | Pipeline Orchestration (Dagster) |
+| **Task 1** |  **COMPLETE** | Data Scraping and Collection (Telegram) |
+| **Task 2** |  **COMPLETE** | Data Modeling and Transformation (dbt) |
+| **Task 3** |  **COMPLETE** | Data Enrichment with Object Detection (YOLO) |
+| **Task 4** |  **COMPLETE** | Analytical API Development (FastAPI) |
+| **Task 5** |  **COMPLETE** | Pipeline Orchestration (Dagster) |
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 This project implements a complete **ELT (Extract, Load, Transform)** pipeline for analyzing medical business data from Ethiopian Telegram channels:
 
@@ -33,7 +33,7 @@ This project implements a complete **ELT (Extract, Load, Transform)** pipeline f
 └─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## 🚀 Key Features
+## Key Features
 
 ### 📊 **Data Pipeline**
 - **Automated Telegram Scraping**: 19 Ethiopian medical channels
@@ -127,7 +127,7 @@ telegram-medical-data-pipeline/
 └── README.md                       # Project documentation
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -238,9 +238,9 @@ python scripts/setup_database.py
 - **Asset lineage** and monitoring
 - **Production-ready** orchestration
 
-## 📈 API Endpoints
+## API Endpoints
 
-### 🔍 **Analytics Endpoints**
+### **Analytics Endpoints**
 ```http
 GET /api/analytics/summary                    # Overall pipeline summary
 GET /api/channels                             # List all channels
@@ -252,14 +252,14 @@ GET /api/image-detections                     # YOLO detection results
 GET /api/reports/medical-insights             # Medical insights
 ```
 
-### 📊 **Data Endpoints**
+### **Data Endpoints**
 ```http
 GET /health                                   # Health check
 GET /docs                                     # API documentation
 GET /redoc                                    # Alternative docs
 ```
 
-## 🔧 Development Commands
+## Development Commands
 
 ### Pipeline Management
 ```bash
@@ -385,7 +385,7 @@ docker-compose up -d --scale app=3
 - **Logging** configuration
 - **Security** settings
 
-## 📈 Performance & Scalability
+## Performance & Scalability
 
 ### Current Capabilities
 - **19 Telegram channels** monitored
@@ -399,30 +399,8 @@ docker-compose up -d --scale app=3
 - **Resource optimization** for cost
 - **Caching strategies** for performance
 
-## 🤝 Contributing
-
-1. **Fork** the repository
-2. **Create** a feature branch
-3. **Make** your changes
-4. **Add** tests and documentation
-5. **Submit** a pull request
-
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support & Issues
-
-- **GitHub Issues**: [Report bugs](https://github.com/BruhTes/telegram-medical-data-pipeline/issues)
-- **Documentation**: [Wiki](https://github.com/BruhTes/telegram-medical-data-pipeline/wiki)
-- **Discussions**: [Community forum](https://github.com/BruhTes/telegram-medical-data-pipeline/discussions)
-
-## 🎉 Project Status
-
-**✅ ALL TASKS COMPLETE - PRODUCTION READY!**
+**ALL TASKS COMPLETE - PRODUCTION READY!**
 
 This project represents a complete, production-ready data pipeline for Ethiopian medical business analytics. All components are implemented, tested, and integrated for automated operation.
 
 ---
-
-**Built with ❤️ for Ethiopian Medical Business Analytics**
