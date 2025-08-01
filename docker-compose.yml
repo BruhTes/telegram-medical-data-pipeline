@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: telegram_medical_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-telegram_medical}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - telegram_medical_network
+
+  # Python Application
+  app:
+    build: .
+    container_name: telegram_medical_app
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-telegram_medical}
+      - TELEGRAM_API_ID=${TELEGRAM_API_ID}
+      - TELEGRAM_API_HASH=${TELEGRAM_API_HASH}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_PHONE=${TELEGRAM_PHONE}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - telegram_medical_network
+    restart: unless-stopped
+
+  # dbt
+  dbt:
+    build: .
+    container_name: telegram_medical_dbt
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-telegram_medical}
+    depends_on:
+      - postgres
+    volumes:
+      - ./dbt:/app/dbt
+      - ./data:/app/data
+    networks:
+      - telegram_medical_network
+    command: ["dbt", "run"]
+
+  # Dagster
+  dagster:
+    build: .
+    container_name: telegram_medical_dagster
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-telegram_medical}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./dagster:/app/dagster
+      - ./data:/app/data
+    networks:
+      - telegram_medical_network
+    command: ["dagster", "dev", "-h", "0.0.0.0", "-p", "3000"]
+
+volumes:
+  postgres_data:
+
+networks:
+  telegram_medical_network:
+    driver: bridge 

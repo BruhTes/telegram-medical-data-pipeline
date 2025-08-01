@@ -1,0 +1,51 @@
+# Core dependencies
+python-dotenv==1.0.0
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+
+# Database
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.23
+alembic==1.13.1
+
+# Data processing
+pandas==2.1.4
+numpy==1.25.2
+pydantic==2.5.0
+
+# Telegram API
+telethon==1.32.1
+python-telegram-bot==20.7
+
+# dbt
+dbt-core==1.7.3
+dbt-postgres==1.7.3
+
+# Dagster
+dagster==1.5.8
+dagster-postgres==1.5.8
+
+# YOLO and computer vision
+ultralytics==8.0.196
+opencv-python==4.8.1.78
+Pillow==10.1.0
+
+# HTTP requests
+requests==2.31.0
+aiohttp==3.9.1
+
+# Data validation and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+
+# Development tools
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Logging
+loguru==0.7.2
+
+# Configuration
+pyyaml==6.0.1 
