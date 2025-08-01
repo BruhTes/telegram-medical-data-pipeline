@@ -1,0 +1,163 @@
+version: 2
+
+models:
+  - name: dim_channels
+    description: "Dimension table containing information about Telegram channels"
+    columns:
+      - name: channel_name
+        description: "Primary key - name of the Telegram channel"
+        tests:
+          - unique
+          - not_null
+      - name: channel_id
+        description: "Telegram channel ID"
+      - name: category
+        description: "Channel category (cosmetics, pharmaceuticals, medical_supplies, healthcare, pharmacy, general)"
+      - name: priority
+        description: "Channel priority level (high, medium, low)"
+      - name: message_count
+        description: "Total number of messages from this channel"
+      - name: media_count
+        description: "Number of messages with media"
+      - name: medical_messages_count
+        description: "Number of messages containing medical keywords"
+      - name: price_messages_count
+        description: "Number of messages containing price information"
+      - name: avg_message_length
+        description: "Average length of messages from this channel"
+      - name: unique_senders
+        description: "Number of unique senders in this channel"
+      - name: first_message_date
+        description: "Date of the first message from this channel"
+      - name: last_message_date
+        description: "Date of the most recent message from this channel"
+      - name: medical_content_percentage
+        description: "Percentage of messages containing medical keywords"
+      - name: media_content_percentage
+        description: "Percentage of messages containing media"
+      - name: activity_level
+        description: "Channel activity level (high, medium, low)"
+      - name: channel_type
+        description: "Type of channel based on content (medical_focused, media_heavy, commerce_focused, general)"
+
+  - name: dim_dates
+    description: "Dimension table for time-based analysis with comprehensive date attributes"
+    columns:
+      - name: date_id
+        description: "Primary key - date in YYYY-MM-DD format"
+        tests:
+          - unique
+          - not_null
+      - name: year
+        description: "Year"
+      - name: month
+        description: "Month (1-12)"
+      - name: day
+        description: "Day of month (1-31)"
+      - name: day_of_week
+        description: "Day of week (0=Sunday, 6=Saturday)"
+      - name: day_of_year
+        description: "Day of year (1-366)"
+      - name: week_of_year
+        description: "Week of year (1-53)"
+      - name: quarter
+        description: "Quarter (1-4)"
+      - name: month_name
+        description: "Full month name"
+      - name: month_name_short
+        description: "Abbreviated month name"
+      - name: day_name
+        description: "Full day name"
+      - name: day_name_short
+        description: "Abbreviated day name"
+      - name: fiscal_year
+        description: "Fiscal year (starts in July)"
+      - name: fiscal_quarter
+        description: "Fiscal quarter (1-4)"
+      - name: is_business_day
+        description: "Boolean indicating if this is a business day"
+      - name: is_weekend
+        description: "Boolean indicating if this is a weekend"
+      - name: season
+        description: "Season (Winter, Spring, Summer, Fall)"
+      - name: ethiopian_year
+        description: "Ethiopian calendar year (approximate)"
+
+  - name: fct_messages
+    description: "Fact table containing one row per message with foreign keys to dimension tables"
+    columns:
+      - name: raw_data_id
+        description: "Foreign key to raw data table"
+      - name: message_id
+        description: "Primary key - Telegram message ID"
+        tests:
+          - unique
+          - not_null
+      - name: channel_name
+        description: "Foreign key to dim_channels"
+      - name: channel_id
+        description: "Telegram channel ID"
+      - name: sender_id
+        description: "Telegram sender ID"
+      - name: message_date_id
+        description: "Foreign key to dim_dates"
+      - name: message_text
+        description: "Content of the message"
+      - name: message_length
+        description: "Length of the message text"
+      - name: has_text
+        description: "Boolean indicating if message has text"
+      - name: has_media
+        description: "Boolean indicating if message has media"
+      - name: contains_medical_keywords
+        description: "Boolean indicating if message contains medical keywords"
+      - name: contains_price_info
+        description: "Boolean indicating if message contains price information"
+      - name: local_media_path
+        description: "Path to downloaded media file"
+      - name: media_type
+        description: "Type of media (photo, video, document, etc.)"
+      - name: media_file_size
+        description: "Size of media file in bytes"
+      - name: media_mime_type
+        description: "MIME type of media file"
+      - name: sender_username
+        description: "Username of message sender"
+      - name: sender_first_name
+        description: "First name of message sender"
+      - name: sender_last_name
+        description: "Last name of message sender"
+      - name: channel_category
+        description: "Category of the channel (from dim_channels)"
+      - name: channel_priority
+        description: "Priority level of the channel (from dim_channels)"
+      - name: channel_activity_level
+        description: "Activity level of the channel (from dim_channels)"
+      - name: channel_type
+        description: "Type of channel (from dim_channels)"
+      - name: message_length_category
+        description: "Categorized message length (short, medium, long)"
+      - name: message_type
+        description: "Type of message (medical_commerce, medical_info, commerce, general)"
+      - name: content_type
+        description: "Type of content (medical_media, media_only, medical_text, text_only)"
+      - name: message_year
+        description: "Year of message (from dim_dates)"
+      - name: message_month
+        description: "Month of message (from dim_dates)"
+      - name: message_day
+        description: "Day of message (from dim_dates)"
+      - name: message_day_of_week
+        description: "Day of week of message (from dim_dates)"
+      - name: message_quarter
+        description: "Quarter of message (from dim_dates)"
+      - name: message_month_name
+        description: "Month name of message (from dim_dates)"
+      - name: message_day_name
+        description: "Day name of message (from dim_dates)"
+      - name: message_is_business_day
+        description: "Whether message was sent on a business day (from dim_dates)"
+      - name: message_is_weekend
+        description: "Whether message was sent on a weekend (from dim_dates)"
+      - name: message_season
+        description: "Season of message (from dim_dates)" 

@@ -1,0 +1,30 @@
+telegram_medical_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: password
+      port: 5432
+      dbname: telegram_medical
+      schema: public
+      threads: 4
+      keepalives_idle: 0
+      search_path: public
+      role: null
+      sslmode: prefer
+      
+    prod:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: password
+      port: 5432
+      dbname: telegram_medical
+      schema: public
+      threads: 8
+      keepalives_idle: 0
+      search_path: public
+      role: null
+      sslmode: prefer 
